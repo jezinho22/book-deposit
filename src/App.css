@@ -1,0 +1,47 @@
+header,
+footer {
+	background-color: navy;
+	color: white;
+	padding: 1rem;
+}
+.displayBook {
+	width: 300px;
+	border: 3px solid navy;
+	border-radius: 6px;
+	margin: 1rem;
+	padding: 0.5rem;
+	box-shadow: 3px 3px 3px darkmagenta;
+	background-color: aqua;
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+}
+.bookShelf {
+	display: flex;
+	flex-wrap: wrap;
+	justify-content: space-around;
+}
+body {
+	font-family: Verdana, Geneva, Tahoma, sans-serif;
+	background-color: white;
+	color: darkblue;
+}
+h1 {
+	font-size: 3rem;
+	margin: 0;
+	text-align: center;
+}
+h5 {
+	text-align: center;
+}
+button {
+	background-color: navy;
+	color: aqua;
+	padding: 0.3rem;
+	width: 100px;
+	border-radius: 4px;
+	box-shadow: 2px 2px 2px gray;
+}
+button:hover {
+	color: white;
+}

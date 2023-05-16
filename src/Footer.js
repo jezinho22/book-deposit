@@ -1,9 +1,10 @@
-import React from "react";
+import About from "./About";
 
 function Footer() {
 	return (
 		<footer>
-			<h2>Footer</h2>
+			<h5>Jezinho 2023</h5>
+			<About />
 		</footer>
 	);
 }
