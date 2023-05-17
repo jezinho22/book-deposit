@@ -1,7 +1,11 @@
-function BestBooks({ book, deleteBook }) {
+import { Link } from "react-router-dom";
+
+export default function BestBooks({ book, deleteBook }) {
 	return (
 		<div className="displayBook">
-			<h4>{book.title}</h4>
+			<h4>
+				<Link to={`/book/${book._id}`}>{book.title}</Link>
+			</h4>
 			<p>{book.description}</p>
 			<p>{book.status}</p>
 			<button onClick={() => deleteBook(book._id)}>Remove book</button>
@@ -15,5 +19,3 @@ function BestBooks({ book, deleteBook }) {
 		</div>
 	);
 }
-
-export default BestBooks;

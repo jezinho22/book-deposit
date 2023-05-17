@@ -1,9 +1,11 @@
 import Header from "./Header";
 import Footer from "./Footer";
-import BestBooks from "./BestBooks";
-import ModalForm from "./ModalForm";
 import { useState, useEffect } from "react";
 import axios from "axios";
+import { BrowserRouter, Route, Routes } from "react-router-dom";
+import Home from "./pages/Home";
+import About from "./pages/About";
+import BookPage from "./pages/BookPage";
 import "./App.css";
 
 function App() {
@@ -12,6 +14,7 @@ function App() {
 	const [form, setForm] = useState({});
 
 	useEffect(() => {
+		console.log("Used effect");
 		getBooks();
 	}, []);
 
@@ -20,11 +23,13 @@ function App() {
 	}
 
 	async function getBooks() {
+		console.log("Going to get books");
 		const API = "http://localhost:8080/books";
 		const res = await axios.get(API);
 		const newBooks = res.data;
 		setBooks(newBooks);
 	}
+
 	function handleChange(event) {
 		console.log("changed");
 		setForm({ ...form, [event.target.name]: event.target.value });
@@ -48,19 +53,30 @@ function App() {
 		getBooks();
 	}
 	return (
-		<div className="App">
-			<Header />
-			<h2>My Book Shelf</h2>
-
-			<button onClick={showForm}>Add book</button>
-			{modal && <ModalForm postBook={postBook} handleChange={handleChange} />}
-			<div className="bookShelf">
-				{books.map((book) => {
-					return <BestBooks book={book} deleteBook={deleteBook}></BestBooks>;
-				})}
+		<BrowserRouter>
+			<div className="App">
+				<Header />
+				<h2>My Book Shelf</h2>
+				<Routes>
+					<Route
+						path="/"
+						element={
+							<Home
+								showForm={showForm}
+								modal={modal}
+								books={books}
+								postBook={postBook}
+								handleChange={handleChange}
+								deleteBook={deleteBook}
+							/>
+						}
+					/>
+					<Route path="/about" element={<About />} />
+					<Route path="/book/:id" element={<BookPage />} />
+				</Routes>
+				<Footer />
 			</div>
-			<Footer />
-		</div>
+		</BrowserRouter>
 	);
 }
 
