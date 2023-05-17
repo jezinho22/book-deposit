@@ -56,7 +56,6 @@ function App() {
 		<BrowserRouter>
 			<div className="App">
 				<Header />
-				<h2>My Book Shelf</h2>
 				<Routes>
 					<Route
 						path="/"

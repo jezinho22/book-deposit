@@ -11,6 +11,8 @@ export default function Home({
 }) {
 	return (
 		<div>
+			{" "}
+			<h2>My Book Shelf</h2>
 			<button onClick={showForm}>Add book</button>
 			{modal && <ModalForm postBook={postBook} handleChange={handleChange} />}
 			<div className="bookShelf">
